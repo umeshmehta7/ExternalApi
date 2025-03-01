@@ -59,6 +59,27 @@ class ProductServiceTest {
         assertEquals(productDto.cuisine(), "Indian");
     }
 
+    @Test
+    void shouldReturnProductsWhenCusineFound() {
+        when(productClient.fetchProducts()).thenReturn(getProductResponse());
+        when(recipeClient.fetchRecipe()).thenReturn(getRecipeResponse());
+        List<ProductDto> products = productService.getProductsByCuisine("Indian");
+        ProductDto productDto = products.get(0);
+        assertEquals(products.size(), 1);
+        assertEquals(productDto.id(), 1);
+        assertEquals(productDto.title(), "Javva");
+        assertEquals(productDto.price(), 99.9);
+        assertEquals(productDto.cuisine(), "Indian");
+    }
+
+    @Test
+    void shouldReturnEmptyListWhenCusineNotFound() {
+        when(productClient.fetchProducts()).thenReturn(getProductResponse());
+        when(recipeClient.fetchRecipe()).thenReturn(getRecipeResponse());
+        List<ProductDto> products = productService.getProductsByCuisine("American");
+        assertEquals( 0,products.size());
+    }
+
     private ProductResponse getProductResponse() {
         ProductResponse productResponse = new ProductResponse();
         Product product = new Product();

@@ -8,9 +8,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import java.util.Arrays;
-import java.util.List;
-
 @SpringBootTest
 @AutoConfigureMockMvc
 public class ProductControllerTest {
@@ -20,6 +17,12 @@ public class ProductControllerTest {
     @Test
     void shouldReturnProductList() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/products"))
+                .andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+    @Test
+    void shouldReturnProductByCusine() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/products/Italian"))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 }
