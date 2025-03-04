@@ -1,4 +1,4 @@
-package com.example.ExternalApi;
+package com.example.ExternalApi.controller;
 
 import com.example.ExternalApi.dto.ProductDto;
 import com.example.ExternalApi.service.ProductService;
