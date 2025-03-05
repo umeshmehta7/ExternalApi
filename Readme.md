@@ -6,4 +6,11 @@ This project has two sections
     1. /publish which publish message into queue
     2. /receive fetch all the messages from queue
   3. Queue name: my-queue, exchange: my-exchange, routing key:my-routing-key
-        
+
+# Docker
+ This application is fully dockerized,
+- To start the application on your local run
+```docker-compose up```
+- To stop the application on your local run
+    ```docker-compose down```
+          
